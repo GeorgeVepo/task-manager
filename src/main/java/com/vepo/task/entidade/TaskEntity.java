@@ -1,5 +1,7 @@
 package com.vepo.task.entidade;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,22 +16,29 @@ public class TaskEntity {
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	@Column
 	private String titulo;
-	
+
 	@Column
 	private String status;
-	
+
+	@Column
+	private String descricao;
+
 	public TaskEntity() {
 	}
-	
-	public TaskEntity(long id, String titulo, String status) {
+
+
+	public TaskEntity(long id, String titulo, String status, String descricao) {
 		this.id = id;
 		this.titulo = titulo;
 		this.status = status;
+		this.descricao = descricao;
 	}
-	
+
+
+
 	public long getId() {
 		return id;
 	}
@@ -51,6 +60,16 @@ public class TaskEntity {
 		this.status = status;
 	}
 
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	
-	
+
 }

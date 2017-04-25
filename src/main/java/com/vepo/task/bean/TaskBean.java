@@ -22,6 +22,8 @@ public class TaskBean {
 	private TaskDAO taskDAO;
 	private TaskEntity enTask;
 	private DataModel listDataModel;
+	private boolean renderEdit;
+	private boolean renderCreate;
 	
 	public TaskDAO getTaskDAO() {
 		return taskDAO;
@@ -44,6 +46,24 @@ public class TaskBean {
 	}
 
 
+
+	public boolean isRenderEdit() {
+		return renderEdit;
+	}
+
+	public void setRenderEdit(boolean renderEdit) {
+		this.renderEdit = renderEdit;
+	}
+	
+	
+
+	public boolean isRenderCreate() {
+		return renderCreate;
+	}
+
+	public void setRenderCreate(boolean renderCreate) {
+		this.renderCreate = renderCreate;
+	}
 
 	public String update(){
 		taskDAO.update(enTask);
@@ -68,13 +88,19 @@ public class TaskBean {
 	}
 	
 	public String newTask(){
+		setRenderEdit(false);
+		setRenderCreate(true);
 		enTask = new TaskEntity();
 		return "gerenciar";
 	}
 	
 	public String edit(){
+		setRenderEdit(true);
+		setRenderCreate(false);
 		enTask = (TaskEntity)(listDataModel.getRowData());
 		return "gerenciar";
 	}
+	
+	
 	
 }

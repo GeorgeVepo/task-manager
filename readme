@@ -1,0 +1,4 @@
+Para rodar essa aplicação é necessário:
+- Ter o instalar o tomcat 7;
+- Ter instalao o mysql workbench;
+- Rodar a sql no arquivo db-setup.sql.

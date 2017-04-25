@@ -23,10 +23,17 @@
 				</b:selectOneMenu>
 			</b:row>
 			<b:row>
-			<b:commandButton icon="circle-arrow-left" action="index" value="Voltar" look="warning"/>
-			<b:commandButton icon="plus" action="#{taskBean.add()}"
-				value="Inserir Nova Tarefa" look="success"/>
-			<b:commandButton icon="edit" action="#{taskBean.update()}" value="Alterar Tarefa" look="primary"/>
+				<b:inputTextarea label="Descrição" span="8" rows="5" 
+					value="#{taskBean.enTask.descricao}">
+				</b:inputTextarea>
+			</b:row>
+			<b:row>
+				<b:commandButton icon="circle-arrow-left" action="index"
+					value="Voltar" look="warning" />
+				<b:commandButton rendered="#{taskBean.renderCreate}" icon="plus" action="#{taskBean.add()}"
+					value="Inserir Nova Tarefa" look="success" />
+				<b:commandButton rendered="#{taskBean.renderEdit}" icon="edit" action="#{taskBean.update()}"
+					value="Alterar Tarefa" look="primary" />
 			</b:row>
 		</h:form>
 
