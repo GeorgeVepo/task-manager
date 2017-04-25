@@ -24,17 +24,11 @@
 			<h:outputText value="#{enTask.status}" />
 		</h:column>
 		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Alterar" />
-			</f:facet>
 			<h:form>
 				<h:commandButton action="#{taskBean.edit}" value="Alterar" />
 			</h:form>
 		</h:column>
 		<h:column>
-                <f:facet name="header">
-                    <h:outputText value="Excluir"/>
-                </f:facet>
                 <h:form>
                     <h:commandButton action="#{taskBean.remove}" value="Excluir"/>
                     </h:form>
