@@ -3,42 +3,42 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<title>Gerenciador de Tarefas</title>
 </h:head>
 
 <h:body>
 	<h1>Gerenciador de Tarefas</h1>
-	<h:dataTable var="enTask" value="#{taskBean.list()}">
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Título" />
-			</f:facet>
-			<h:outputText value="#{enTask.titulo}" />
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Status" />
-			</f:facet>
-			<h:outputText value="#{enTask.status}" />
-		</h:column>
-		<h:column>
-			<h:form>
-				<h:commandButton action="#{taskBean.edit}" value="Alterar" />
-			</h:form>
-		</h:column>
-		<h:column>
-                <h:form>
-                    <h:commandButton action="#{taskBean.remove}" value="Excluir"/>
-                    </h:form>
-            </h:column>
-	</h:dataTable>
-	<br />
-	<h:form>
-		<h:commandLink value="Nova Tarefa"
-			action="#{taskBean.newTask}" />
-	</h:form>
+	<b:container>
+		<b:dataTable value="#{taskBean.list()}" var="enTask"
+				fixedHeader="true" scroll-x="false"
+				responsive="true" lang="it" searching="false">
+			<b:dataTableColumn label="Título" value="#{enTask.titulo}" />
+			<b:dataTableColumn label="Status" value="#{enTask.status}" />
+			<b:dataTableColumn label="">
+				<h:form>
+					<b:commandButton value="Alterar" icon="edit"
+						action="#{taskBean.edit}" look="primary">
+					</b:commandButton>
+				</h:form>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="">
+				<h:form>
+					<b:commandButton value="Excluir" icon="trash"
+						action="#{taskBean.remove}" look="warning">
+					</b:commandButton>
+				</h:form>
+			</b:dataTableColumn>
+		</b:dataTable>
+		<br />
+		<h:form>
+			<b:commandButton value="Nova Tarefa" icon="plus" look="success"
+				action="#{taskBean.newTask}">
+			</b:commandButton>
+		</h:form>
+	</b:container>
 </h:body>
 
 </html>

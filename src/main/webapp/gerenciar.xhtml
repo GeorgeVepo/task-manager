@@ -2,24 +2,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<title>Gerenciador de Tarefas</title>
 </h:head>
 <h:body>
-	<h1>Gerenciador de Tarefas</h1>
-	<h:form>
-Título <h:inputText value="#{taskBean.enTask.titulo}" />
-		<br />
-		<h:selectOneMenu id="statusList" value="#{taskBean.enTask.status}">
-			<f:selectItem itemLabel="Completado" itemValue="Completado" />
-			<f:selectItem itemLabel="Pendente" itemValue="Pendente" />
-		</h:selectOneMenu>
-		<h:commandButton action="#{taskBean.add()}"
-			value="Inserir Nova Tarefa" />
-		<h:commandButton action="#{taskBean.update()}" value="Alterar Tarefa" />
-		<br />
-		<h:commandLink action="index" value="Voltar" />
-	</h:form>
+	<b:well>
+		<b:row>
+			<h1>Gerenciar Tarefas</h1>
+		</b:row>
+		<h:form>
+			<b:row>
+				<b:inputText span="5" label="Título"
+					value="#{taskBean.enTask.titulo}" />
+				<b:selectOneMenu label="Status" span="5"
+					value="#{taskBean.enTask.status}" id="statusList">
+					<f:selectItem itemLabel="Pendente" itemValue="Pendente" />
+					<f:selectItem itemLabel="Completado" itemValue="Completado" />
+				</b:selectOneMenu>
+			</b:row>
+			<b:row>
+			<b:commandButton icon="circle-arrow-left" action="index" value="Voltar" look="warning"/>
+			<b:commandButton icon="plus" action="#{taskBean.add()}"
+				value="Inserir Nova Tarefa" look="success"/>
+			<b:commandButton icon="edit" action="#{taskBean.update()}" value="Alterar Tarefa" look="primary"/>
+			</b:row>
+		</h:form>
+
+	</b:well>
 </h:body>
 </html>
