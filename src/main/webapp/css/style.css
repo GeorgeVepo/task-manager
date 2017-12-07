@@ -1,0 +1,11 @@
+@CHARSET "ISO-8859-1";
+
+#painel-principal{
+	margin-top: 10%;
+}
+
+.btn-success {
+	float: right !important;
+    margin: 5% 1.4% 0px 0 !important;
+}
+
