@@ -15,7 +15,7 @@
 		<h:form>
 			<b:row>
 				<b:inputText span="5" label="Título"
-					value="#{taskBean.enTask.titulo}" />
+					value="#{taskBean.enTask.titulo}"  required="true" requiredMessage="Por favor, insira o título da tarefa."/>
 				<b:selectOneMenu label="Status" span="5"
 					value="#{taskBean.enTask.status}" id="statusList">
 					<f:selectItem itemLabel="Pendente" itemValue="Pendente" />
@@ -29,7 +29,7 @@
 			</b:row>
 			<b:row>
 				<b:commandButton icon="circle-arrow-left" action="index"
-					value="Voltar" look="warning" />
+					value="Voltar" look="warning" immediate="true"/>
 				<b:commandButton rendered="#{taskBean.renderCreate}" icon="plus" action="#{taskBean.add()}"
 					value="Inserir Nova Tarefa" look="success" />
 				<b:commandButton rendered="#{taskBean.renderEdit}" icon="edit" action="#{taskBean.update()}"
