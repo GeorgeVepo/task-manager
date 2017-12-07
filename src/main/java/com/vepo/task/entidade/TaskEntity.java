@@ -12,6 +12,13 @@ import javax.persistence.Id;
 
 @Entity
 public class TaskEntity {
+	
+	public TaskEntity(long id, String titulo, String status, String descricao) {
+		this.id = id;
+		this.titulo = titulo;
+		this.status = status;
+		this.descricao = descricao;
+	}
 
 	@Id
 	@GeneratedValue
@@ -28,16 +35,6 @@ public class TaskEntity {
 
 	public TaskEntity() {
 	}
-
-
-	public TaskEntity(long id, String titulo, String status, String descricao) {
-		this.id = id;
-		this.titulo = titulo;
-		this.status = status;
-		this.descricao = descricao;
-	}
-
-
 
 	public long getId() {
 		return id;

@@ -12,26 +12,26 @@
 <h:body>
 	<h1>Gerenciador de Tarefas</h1>
 	<b:container>
-		<b:dataTable value="#{taskBean.list()}" var="enTask"
-			fixedHeader="true" scroll-x="false" responsive="true" lang="it"
-			searching="false">
-			<b:dataTableColumn label="Título" value="#{enTask.titulo}"/>
-			<b:dataTableColumn label="Status" value="#{enTask.status}"/>
-			<b:dataTableColumn label="">
-				<h:form>
-					<b:commandButton value="Alterar" icon="edit"
-						action="#{taskBean.edit}" look="primary">
-					</b:commandButton>
-				</h:form>
-			</b:dataTableColumn>
-			<b:dataTableColumn label="">
-				<h:form>
-					<b:commandButton value="Excluir" icon="trash"
-						action="#{taskBean.remove}" look="warning">
-					</b:commandButton>
-				</h:form>
-			</b:dataTableColumn>
+		<b:dataTable value="#{taskBean.listEnTaskDataModel()}" var="enTask"
+			fixedHeader="true" scroll-x="false" responsive="true" customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"
+			searching="false" col-lg="12">
+			<b:dataTableColumn label="Título" value="#{enTask.titulo}" class="col-sm-2"/>
+			<b:dataTableColumn label="Status" value="#{enTask.status}" class="col-sm-2"/>
 			<b:dataTableColumn label="Descrição" value="#{enTask.descricao}" />
+			<b:dataTableColumn label="Alterar" class="col-sm-1">
+				<h:form>
+					<b:commandButton icon="edit"
+						action="#{taskBean.edit}" value="" look="warning">
+					</b:commandButton>
+				</h:form>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Excluir" class="col-sm-1">
+				<h:form>
+					<b:commandButton value="" icon="trash"
+						action="#{taskBean.remove}" look="danger">
+					</b:commandButton>
+				</h:form>
+			</b:dataTableColumn>			
 		</b:dataTable>
 		<br />
 		<h:form>

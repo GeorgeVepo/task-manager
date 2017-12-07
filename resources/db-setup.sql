@@ -1,5 +1,7 @@
 CREATE DATABASE IF NOT EXISTS task_manager;
 
+USE task_manager;
+
 CREATE TABLE `taskentity` (
 `id` bigint(20) NOT NULL AUTO_INCREMENT,
 `titulo` varchar(255) DEFAULT NULL,

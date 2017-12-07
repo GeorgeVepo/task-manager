@@ -45,10 +45,10 @@ public class TaskDAOImpl implements TaskDAO{
 
 	@Override
 	public void update(TaskEntity enTask) {		
-	Session session = HibernateUtil.getSessionFactory().openSession();
-	Transaction t = session.beginTransaction();
-	session.update(enTask);
-	t.commit();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.update(enTask);
+		t.commit();
 	}
 
 

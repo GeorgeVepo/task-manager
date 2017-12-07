@@ -1,4 +1,8 @@
 Para rodar essa aplicação é necessário:
-- Ter o instalar o tomcat 7;
-- Ter instalao o mysql workbench;
-- Rodar a sql no arquivo db-setup.sql.
+- Ter instalado o tomcat 7;
+- Ter instalado o mysql server;
+- Rodar a sql no arquivo db-setup.sql;
+- Alterar o username e o password do hibernate.cfg.xml para conectar ao banco.
+
+A url é http://localhost:8080/JavaServerFaces/index.jsf.
+

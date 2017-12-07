@@ -1,7 +1,9 @@
 package com.vepo.task.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
@@ -16,64 +18,29 @@ import com.vepo.task.entidade.TaskEntity;
 @Scope("session")
 public class TaskBean {
 	
-	
-
 	@Autowired
 	private TaskDAO taskDAO;
 	private TaskEntity enTask;
-	private DataModel listDataModel;
+	private DataModel enTaskDataModel;
 	private boolean renderEdit;
 	private boolean renderCreate;
 	
-	public TaskDAO getTaskDAO() {
-		return taskDAO;
-	}
-	
-	public TaskEntity getEnTask() {
-		return enTask;
-	}
-
-
-
-	public void setEnTask(TaskEntity enTask) {
-		this.enTask = enTask;
-	}
-
-
-
-	public void setTaskDAO(TaskDAO taskDAO) {
-		this.taskDAO = taskDAO;
-	}
-
-
-
-	public boolean isRenderEdit() {
-		return renderEdit;
-	}
-
-	public void setRenderEdit(boolean renderEdit) {
-		this.renderEdit = renderEdit;
-	}
-	
-	
-
-	public boolean isRenderCreate() {
-		return renderCreate;
-	}
-
-	public void setRenderCreate(boolean renderCreate) {
-		this.renderCreate = renderCreate;
+	@PostConstruct
+	public void TaskBean() {
+		this.newTask();
+		this.listEnTaskDataModel();
 	}
 
 	public String update(){
 		taskDAO.update(enTask);
 		return "index";
-		}
+	}
 
-	public DataModel list(){
+	public DataModel listEnTaskDataModel(){
 		List<TaskEntity> taskList = taskDAO.list();
-		listDataModel = new ListDataModel(taskList);
-		return listDataModel;
+		enTaskDataModel = new ListDataModel(taskList);
+		return enTaskDataModel;
+		
 	}
 	
 	public String add(){
@@ -82,7 +49,7 @@ public class TaskBean {
 	}
 	
 	public String remove(){
-		enTask = (TaskEntity)(listDataModel.getRowData());
+		enTask = (TaskEntity)(enTaskDataModel.getRowData());
 		taskDAO.remove(enTask);
 		return "index";
 	}
@@ -97,10 +64,48 @@ public class TaskBean {
 	public String edit(){
 		setRenderEdit(true);
 		setRenderCreate(false);
-		enTask = (TaskEntity)(listDataModel.getRowData());
+		enTask = (TaskEntity)(enTaskDataModel.getRowData());
 		return "gerenciar";
 	}
 	
+	public TaskDAO getTaskDAO() {
+		return taskDAO;
+	}
 	
+	public TaskEntity getEnTask() {
+		return enTask;
+	}
+
+	public void setEnTask(TaskEntity enTask) {
+		this.enTask = enTask;
+	}
+
+	public void setTaskDAO(TaskDAO taskDAO) {
+		this.taskDAO = taskDAO;
+	}
+
+	public boolean isRenderEdit() {
+		return renderEdit;
+	}
+
+	public void setRenderEdit(boolean renderEdit) {
+		this.renderEdit = renderEdit;
+	}
+
+	public boolean isRenderCreate() {
+		return renderCreate;
+	}
+
+	public void setRenderCreate(boolean renderCreate) {
+		this.renderCreate = renderCreate;
+	}
+
+	public DataModel getEnTaskDataModel() {
+		return enTaskDataModel;
+	}
+
+	public void setEnTaskDataModel(DataModel enTaskDataModel) {
+		this.enTaskDataModel = enTaskDataModel;
+	}	
 	
 }
