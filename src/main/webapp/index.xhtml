@@ -22,7 +22,7 @@
 			<b:dataTableColumn label="Descrição" value="#{enTask.descricao}"  class="col-sm-5"/>
 			<b:dataTableColumn label="Alterar" class="col-sm-1">
 				<h:form>
-					<b:commandButton icon="edit"  action="gerenciar?faces-redirect=true"
+					<b:commandButton icon="edit"  action="editar-tarefa?faces-redirect=true"
 						actionListener="#{taskBean.edit}" value="" look="warning">
 					</b:commandButton>
 				</h:form>
@@ -38,7 +38,7 @@
 		<br />
 		<h:form>
 			<b:commandButton value="Nova Tarefa" icon="plus" look="success" styleClass="botao-nova-tarefa"
-				actionListener="#{taskBean.newTask}" action="gerenciar?faces-redirect=true">
+				actionListener="#{taskBean.newTask}" action="inserir-tarefa?faces-redirect=true">
 			</b:commandButton>
 		</h:form>
 		</b:panel>

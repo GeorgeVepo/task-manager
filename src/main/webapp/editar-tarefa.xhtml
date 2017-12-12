@@ -5,13 +5,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
-	<title>Gerenciador de Tarefas</title>
+	<title>Editar Tarefas</title>
 	 <link rel="StyleSheet" type="text/css" href="css/style.css" media="screen" ></link>
 </h:head>
 <h:body>
 <b:container>
 	 <b:panelGrid colSpans="12" size="xs">
-		<b:panel title="Gerenciar Tarefas" look="primary" styleClass="painel-principal" collapsible="false">
+		<b:panel title="Editar Tarefas" look="primary" styleClass="painel-principal" collapsible="false">
 		
 		<h:form>
 				<b:inputText span="6" label="Título"
@@ -25,10 +25,7 @@
 					value="#{taskBean.enTask.descricao}">
 				</b:inputTextarea>
 				<b:commandButton icon="circle-arrow-left" action="index?faces-redirect=true"
-					value="Voltar" look="warning" immediate="true"  styleClass="botao-voltar"/>
-				<b:commandButton rendered="#{taskBean.renderCreate}" icon="plus" actionListener="#{taskBean.add()}"
-					value="Inserir Nova Tarefa" look="success" action="index?faces-redirect=true"
-					styleClass="botao-gerenciar"/>
+					value="Voltar" look="warning" immediate="true"  styleClass="botao-voltar"/>				
 				<b:commandButton rendered="#{taskBean.renderEdit}" icon="edit" actionListener="#{taskBean.update()}"
 					value="Alterar Tarefa" look="primary" styleClass="botao-gerenciar" action="index?faces-redirect=true"/>
 		</h:form>

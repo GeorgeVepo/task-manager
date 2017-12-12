@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<title>Inserir Tarefas</title>
+	 <link rel="StyleSheet" type="text/css" href="css/style.css" media="screen" ></link>
+</h:head>
+<h:body>
+<b:container>
+	 <b:panelGrid colSpans="12" size="xs">
+		<b:panel title="Inserir Tarefas" look="primary" styleClass="painel-principal" collapsible="false">
+		
+		<h:form>
+				<b:inputText span="6" label="Título"
+					value="#{taskBean.enTask.titulo}"  required="true" requiredMessage="Por favor, insira o título da tarefa."/>
+				<b:selectOneMenu label="Status" span="6"
+					value="#{taskBean.enTask.status}" id="statusList">
+					<f:selectItem itemLabel="Pendente" itemValue="Pendente" />
+					<f:selectItem itemLabel="Completado" itemValue="Completado" />
+				</b:selectOneMenu>
+				<b:inputTextarea label="Descrição" span="12" rows="5" 
+					value="#{taskBean.enTask.descricao}">
+				</b:inputTextarea>
+				<b:commandButton icon="circle-arrow-left" action="index?faces-redirect=true"
+					value="Voltar" look="warning" immediate="true"  styleClass="botao-voltar"/>
+				<b:commandButton rendered="#{taskBean.renderCreate}" icon="plus" actionListener="#{taskBean.add()}"
+					value="Inserir Nova Tarefa" look="success" action="index?faces-redirect=true"
+					styleClass="botao-gerenciar"/>
+		</h:form>
+
+	</b:panel>
+	</b:panelGrid>
+	</b:container>
+</h:body>
+</html>
