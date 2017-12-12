@@ -14,7 +14,7 @@
 	<b:container>
 	<b:panelGrid colSpans="12" size="xs">
 	 <b:panel title="Gerenciador de Tarefas" look="primary" styleClass="painel-principal" collapsible="false">
-		<b:dataTable value="#{taskBean.listEnTaskDataModel()}" var="enTask"
+		<b:dataTable value="#{taskBean.enTaskDataModel}" var="enTask"
 			fixedHeader="true" scroll-x="false" responsive="true" customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"
 			searching="false" col-xs="12">
 			<b:dataTableColumn label="Título" value="#{enTask.titulo}" class="col-sm-2"/>

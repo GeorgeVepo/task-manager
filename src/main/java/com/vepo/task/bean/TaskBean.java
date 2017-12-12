@@ -31,12 +31,11 @@ public class TaskBean {
 		this.listEnTaskDataModel();
 	}
 
-	public String update(){
+	public void update(){
 		if(validateUpdate(enTask)) {
 			taskDAO.update(enTask);
-			return "index";
 		} 
-		return "gerenciar";
+		this.listEnTaskDataModel();
 	}
 
 	public DataModel listEnTaskDataModel(){
@@ -50,6 +49,7 @@ public class TaskBean {
 		if(validateInsert(enTask)) {
 			taskDAO.save(enTask);
 		}
+		this.listEnTaskDataModel();
 	}
 	
 	public String remove(){
@@ -91,6 +91,8 @@ public class TaskBean {
 		}
 		return false;
 	}
+	
+	
 	
 	public TaskDAO getTaskDAO() {
 		return taskDAO;
