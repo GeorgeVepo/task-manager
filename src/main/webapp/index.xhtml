@@ -12,17 +12,18 @@
 
 <h:body>
 	<b:container>
-	 <b:panel title="Gerenciador de Tarefas" look="primary" id="painel-principal">
+	<b:panelGrid colSpans="12" size="xs">
+	 <b:panel title="Gerenciador de Tarefas" look="primary" styleClass="painel-principal" collapsible="false">
 		<b:dataTable value="#{taskBean.listEnTaskDataModel()}" var="enTask"
 			fixedHeader="true" scroll-x="false" responsive="true" customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json"
-			searching="false" col-lg="12">
+			searching="false" col-xs="12">
 			<b:dataTableColumn label="Título" value="#{enTask.titulo}" class="col-sm-2"/>
 			<b:dataTableColumn label="Status" value="#{enTask.status}" class="col-sm-2"/>
-			<b:dataTableColumn label="Descrição" value="#{enTask.descricao}" />
+			<b:dataTableColumn label="Descrição" value="#{enTask.descricao}"  class="col-sm-5"/>
 			<b:dataTableColumn label="Alterar" class="col-sm-1">
 				<h:form>
-					<b:commandButton icon="edit"
-						action="#{taskBean.edit}" value="" look="warning">
+					<b:commandButton icon="edit"  action="gerenciar?faces-redirect=true"
+						actionListener="#{taskBean.edit}" value="" look="warning">
 					</b:commandButton>
 				</h:form>
 			</b:dataTableColumn>
@@ -36,11 +37,12 @@
 		</b:dataTable>
 		<br />
 		<h:form>
-			<b:commandButton value="Nova Tarefa" icon="plus" look="success"
-				action="#{taskBean.newTask}">
+			<b:commandButton value="Nova Tarefa" icon="plus" look="success" styleClass="botao-nova-tarefa"
+				actionListener="#{taskBean.newTask}" action="gerenciar?faces-redirect=true">
 			</b:commandButton>
 		</h:form>
 		</b:panel>
+		</b:panelGrid>
 	</b:container>
 </h:body>
 

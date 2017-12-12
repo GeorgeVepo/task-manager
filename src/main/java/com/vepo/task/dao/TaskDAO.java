@@ -6,10 +6,10 @@ import com.vepo.task.entidade.TaskEntity;
 
 public interface TaskDAO{
 
-	public void save(TaskEntity enTask);
+	public long save(TaskEntity enTask);
 	public TaskEntity getTask(long id);
 	public List<TaskEntity> list();
-	public void remove(TaskEntity enTask);
-	public void update(TaskEntity enTask);
+	public TaskEntity remove(TaskEntity enTask);
+	public TaskEntity update(TaskEntity enTask);
 
 }

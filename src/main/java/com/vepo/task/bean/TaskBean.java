@@ -32,8 +32,11 @@ public class TaskBean {
 	}
 
 	public String update(){
-		taskDAO.update(enTask);
-		return "index";
+		if(validateUpdate(enTask)) {
+			taskDAO.update(enTask);
+			return "index";
+		} 
+		return "gerenciar";
 	}
 
 	public DataModel listEnTaskDataModel(){
@@ -43,9 +46,10 @@ public class TaskBean {
 		
 	}
 	
-	public String add(){
-		taskDAO.save(enTask);
-		return "index";
+	public void add(){
+		if(validateInsert(enTask)) {
+			taskDAO.save(enTask);
+		}
 	}
 	
 	public String remove(){
@@ -54,18 +58,38 @@ public class TaskBean {
 		return "index";
 	}
 	
-	public String newTask(){
+	public void newTask(){
 		setRenderEdit(false);
 		setRenderCreate(true);
 		enTask = new TaskEntity();
-		return "gerenciar";
+		
 	}
 	
-	public String edit(){
+	public void edit(){
 		setRenderEdit(true);
 		setRenderCreate(false);
 		enTask = (TaskEntity)(enTaskDataModel.getRowData());
-		return "gerenciar";
+	}
+	
+	public boolean validateInsert(TaskEntity enTask) {
+		if(enTask.getTitulo() != null && !enTask.getTitulo().isEmpty()) {
+			if(enTask.getStatus() != null && !enTask.getStatus().isEmpty())	{
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
+	public boolean validateUpdate(TaskEntity enTask) {
+		if(enTask.getId() > 0) {
+			if(enTask.getTitulo() != null && !enTask.getTitulo().isEmpty()) {
+				if(enTask.getStatus() != null && !enTask.getStatus().isEmpty())	{
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	public TaskDAO getTaskDAO() {

@@ -6,37 +6,35 @@
 	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<title>Gerenciador de Tarefas</title>
+	 <link rel="StyleSheet" type="text/css" href="css/style.css" media="screen" ></link>
 </h:head>
 <h:body>
-	<b:well>
-		<b:row>
-			<h1>Gerenciar Tarefas</h1>
-		</b:row>
+<b:container>
+	 <b:panelGrid colSpans="12" size="xs">
+		<b:panel title="Gerenciar Tarefas" look="primary" styleClass="painel-principal" collapsible="false">
+		
 		<h:form>
-			<b:row>
-				<b:inputText span="5" label="Título"
+				<b:inputText span="6" label="Título"
 					value="#{taskBean.enTask.titulo}"  required="true" requiredMessage="Por favor, insira o título da tarefa."/>
-				<b:selectOneMenu label="Status" span="5"
+				<b:selectOneMenu label="Status" span="6"
 					value="#{taskBean.enTask.status}" id="statusList">
 					<f:selectItem itemLabel="Pendente" itemValue="Pendente" />
 					<f:selectItem itemLabel="Completado" itemValue="Completado" />
 				</b:selectOneMenu>
-			</b:row>
-			<b:row>
-				<b:inputTextarea label="Descrição" span="8" rows="5" 
+				<b:inputTextarea label="Descrição" span="12" rows="5" 
 					value="#{taskBean.enTask.descricao}">
 				</b:inputTextarea>
-			</b:row>
-			<b:row>
-				<b:commandButton icon="circle-arrow-left" action="index"
-					value="Voltar" look="warning" immediate="true"/>
-				<b:commandButton rendered="#{taskBean.renderCreate}" icon="plus" action="#{taskBean.add()}"
-					value="Inserir Nova Tarefa" look="success" />
-				<b:commandButton rendered="#{taskBean.renderEdit}" icon="edit" action="#{taskBean.update()}"
-					value="Alterar Tarefa" look="primary" />
-			</b:row>
+				<b:commandButton icon="circle-arrow-left" action="index?faces-redirect=true"
+					value="Voltar" look="warning" immediate="true"  styleClass="botao-voltar"/>
+				<b:commandButton rendered="#{taskBean.renderCreate}" icon="plus" actionListener="#{taskBean.add()}"
+					value="Inserir Nova Tarefa" look="success" action="index?faces-redirect=true"
+					styleClass="botao-gerenciar"/>
+				<b:commandButton rendered="#{taskBean.renderEdit}" icon="edit" actionListener="#{taskBean.update()}"
+					value="Alterar Tarefa" look="primary" styleClass="botao-gerenciar" action="index?faces-redirect=true"/>
 		</h:form>
 
-	</b:well>
+	</b:panel>
+	</b:panelGrid>
+	</b:container>
 </h:body>
 </html>

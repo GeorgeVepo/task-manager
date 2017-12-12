@@ -7,48 +7,71 @@ import com.vepo.task.dao.TaskDAO;
 import com.vepo.task.entidade.TaskEntity;
 import com.vepo.utils.HibernateUtil;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 public class TaskDAOImpl implements TaskDAO{
+	
+	private Boolean isTest = false;
+	
+	public TaskDAOImpl() {
+		this.isTest = false;
+	}
+	
+	public TaskDAOImpl(Boolean isTest) {
+		this.isTest = isTest;
+	}
+	
+	private void openSession() {
+		if(!this.isTest) {
+			HibernateUtil.openSession();
+			HibernateUtil.beginTransaction();
+		}
+		
+	}
+	
+	private void closeSession() {
+		if(!isTest) {
+			HibernateUtil.commitTransaction();
+			HibernateUtil.closeSession();
+		}
+	}
 
 	@Override
-	public void save(TaskEntity enTask) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction t = session.beginTransaction();
-		session.save(enTask);
-		t.commit();				
+	public long save(TaskEntity enTask) {
+		openSession();
+		long id = (Long) HibernateUtil.getSession().save(enTask);
+		closeSession();
+		return id;
 	}
 
 	@Override
 	public TaskEntity getTask(long id) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		return (TaskEntity) session.load(TaskEntity.class, id);
+		openSession();
+		TaskEntity e = (TaskEntity) HibernateUtil.getSession().load(TaskEntity.class, id);
+		closeSession();
+		return e;
 	}
 
 	@Override
 	public List<TaskEntity> list() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction t = session.beginTransaction();
-		List lista = session.createQuery("from TaskEntity").list();
-		t.commit();
+		openSession();
+		List lista = HibernateUtil.getSession().createQuery("from TaskEntity").list();
+		closeSession();
 		return lista;
 	}
 
 	@Override
-	public void remove(TaskEntity enTask) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction t = session.beginTransaction();
-		session.delete(enTask);
-		t.commit();
+	public TaskEntity remove(TaskEntity enTask) {
+		openSession();
+		HibernateUtil.getSession().delete(enTask);
+		closeSession();
+		return enTask;
 	}
 
 	@Override
-	public void update(TaskEntity enTask) {		
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		Transaction t = session.beginTransaction();
-		session.update(enTask);
-		t.commit();
+	public TaskEntity update(TaskEntity enTask) {		
+		openSession();
+		HibernateUtil.getSession().update(enTask);
+		closeSession();
+		return enTask;
 	}
 
 
