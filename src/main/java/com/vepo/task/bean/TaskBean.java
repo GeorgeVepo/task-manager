@@ -45,11 +45,13 @@ public class TaskBean {
 		
 	}
 	
-	public void add(){
+	public Long add(){
+		Long id = 0L;
 		if(validateInsert(enTask)) {
-			taskDAO.save(enTask);
+			id = taskDAO.save(enTask);
 		}
 		this.listEnTaskDataModel();
+		return id;
 	}
 	
 	public void remove(){

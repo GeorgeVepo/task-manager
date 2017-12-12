@@ -45,9 +45,15 @@ public class TaskDAOImpl implements TaskDAO{
 	@Override
 	public TaskEntity getTask(long id) {
 		openSession();
-		TaskEntity e = (TaskEntity) HibernateUtil.getSession().load(TaskEntity.class, id);
+		TaskEntity taskEntity;
+		try{
+			taskEntity = (TaskEntity) HibernateUtil.getSession().load(TaskEntity.class, id);
+		} catch (org.hibernate.ObjectNotFoundException e) {
+			closeSession();
+			return null;
+		}
 		closeSession();
-		return e;
+		return taskEntity;
 	}
 
 	@Override
