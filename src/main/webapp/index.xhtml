@@ -29,8 +29,8 @@
 			</b:dataTableColumn>
 			<b:dataTableColumn label="Excluir" class="col-sm-1">
 				<h:form>
-					<b:commandButton value="" icon="trash"
-						action="#{taskBean.remove}" look="danger">
+					<b:commandButton value="" icon="trash" action="index?faces-redirect=true"
+						actionListener="#{taskBean.remove}" look="danger">
 					</b:commandButton>
 				</h:form>
 			</b:dataTableColumn>			

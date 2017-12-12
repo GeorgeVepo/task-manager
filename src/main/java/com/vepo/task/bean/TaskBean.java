@@ -52,10 +52,10 @@ public class TaskBean {
 		this.listEnTaskDataModel();
 	}
 	
-	public String remove(){
+	public void remove(){
 		enTask = (TaskEntity)(enTaskDataModel.getRowData());
 		taskDAO.remove(enTask);
-		return "index";
+		this.listEnTaskDataModel();
 	}
 	
 	public void newTask(){
